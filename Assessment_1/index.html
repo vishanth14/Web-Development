@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fruits & Vegetables Search</title>
+
+    <style>
+        body
+        {
+            margin:0;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+        }
+
+        .one
+        {
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:url("https://images.unsplash.com/photo-1568502212786-1e1eca7c06f3?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") no-repeat center;
+            background-size:cover;
+        }
+
+        .two
+        {
+            background:rgba(255,255,255,0.2);
+            backdrop-filter:blur(12px);
+            padding:40px;
+            border-radius:20px;
+            width:700px;
+            box-shadow:0 15px 40px rgba(0,0,0,0.3);
+            text-align:center;
+            color:white;
+        }
+
+        .three
+        {
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            outline:none;
+            margin-bottom:25px;
+            font-size:16px;
+            background:rgba(255,255,255,0.85);
+        }
+
+        ul
+        {
+            list-style:none;
+            padding:0;
+            margin:0;
+            max-height:300px;
+            overflow-y:auto;
+        }
+
+        li
+        {
+            padding:12px;
+            margin:6px 0;
+            border-radius:10px;
+            background:rgba(255,255,255,0.25);
+            transition:0.3s;
+            font-size:15px;
+        }
+
+        li:hover
+        {
+            background:rgba(255,255,255,0.45);
+            transform:scale(1.03);
+        }
+
+        .four
+        {
+            display:none;
+            margin-top:20px;
+            color:#ffecec;
+            font-size:16px;
+        }
+
+        h2
+        {
+            margin-bottom:25px;
+            font-size:24px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="one">
+
+        <div class="two">
+
+            <h2>Fruits & Vegetables Search</h2>
+
+            <input type="text" id="search" class="three" placeholder="Search fruits or vegetables...">
+
+            <ul id="list">
+                <li>Apple</li>
+                <li>Banana</li>
+                <li>Orange</li>
+                <li>Mango</li>
+                <li>Pineapple</li>
+                <li>Strawberry</li>
+                <li>Watermelon</li>
+                <li>Grapes</li>
+                <li>Kiwi</li>
+                <li>Blueberry</li>
+                <li>Papaya</li>
+                <li>Pomegranate</li>
+                <li>Guava</li>
+                <li>Cherry</li>
+                <li>Dragon Fruit</li>
+                <li>Carrot</li>
+                <li>Potato</li>
+                <li>Tomato</li>
+                <li>Onion</li>
+                <li>Cabbage</li>
+                <li>Cauliflower</li>
+                <li>Spinach</li>
+                <li>Broccoli</li>
+                <li>Beetroot</li>
+                <li>Cucumber</li>
+                <li>Brinjal</li>
+                <li>Capsicum</li>
+                <li>Radish</li>
+                <li>Peas</li>
+                <li>Sweet Corn</li>
+            </ul>
+
+            <div id="noResult" class="four">No results found</div>
+
+        </div>
+
+    </div>
+
+    <script>
+        var input = document.getElementById("search");
+        var items = document.querySelectorAll("#list li");
+        var message = document.getElementById("noResult");
+
+        input.addEventListener("keyup", function()
+        {
+            var value = input.value.toLowerCase();
+            var found = false;
+
+            items.forEach(function(item)
+            {
+                if(item.textContent.toLowerCase().includes(value))
+                {
+                    item.style.display = "block";
+                    found = true;
+                }
+                else
+                {
+                    item.style.display = "none";
+                }
+            });
+
+            if(found)
+            {
+                message.style.display = "none";
+            }
+            else
+            {
+                message.style.display = "block";
+            }
+        });
+    </script>
+
+</body>
+</html>
