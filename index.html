@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="a" class="bg-image"></div>
+    <div class="one">
+        <header class="two">
+            <h1>Weather Finder</h1>
+        </header>
+        <main class="three">
+            <div class="four">
+                <div class="five">
+                    <input type="text" id="b" placeholder="Enter city name">
+                    <button id="c">Search</button>
+                </div>
+                <div class="six">
+                    <button id="d" class="active">°C</button>
+                    <button id="e">°F</button>
+                </div>
+                <div id="f" class="seven hidden">
+                    <div class="spinner"></div>
+                </div>
+                <div id="g" class="eight hidden"></div>
+                <div id="h" class="nine hidden">
+                    <h2 id="i"></h2>
+                    <img id="j" src="" alt="Weather Icon">
+                    <p id="k"></p>
+                    <p id="l"></p>
+                    <div class="ten">
+                        <div class="eleven">
+                            <span>Humidity</span>
+                            <p id="m"></p>
+                        </div>
+                        <div class="eleven">
+                            <span>Wind</span>
+                            <p id="n"></p>
+                        </div>
+                        <div class="eleven">
+                            <span>Pressure</span>
+                            <p id="o"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="p" class="twelve hidden">
+                    <h3>5-Day Forecast</h3>
+                    <div id="q" class="thirteen"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
