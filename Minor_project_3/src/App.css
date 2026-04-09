@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+.bg-animated {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(270deg, #1e3c72, #2a5298, #6a11cb, #00ffd5);
+  background-size: 800% 800%;
+  animation: gradientMove 12s ease infinite;
+  z-index: -2;
+}
+
+.glow1, .glow2 {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+}
+
+.glow1 {
+  background: rgba(0,255,213,0.4);
+  top: -50px;
+  left: -50px;
+}
+
+.glow2 {
+  background: rgba(255,0,200,0.3);
+  bottom: -50px;
+  right: -50px;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.page {
+  animation: fadeIn 0.7s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.glass {
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,255,213,0.3);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.btn {
+  background: #00ffd5;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+}
