@@ -1,0 +1,22 @@
+import express from "express";
+import { registerAdmin, loginAdmin } from "../controllers/adminController.js";
+import { getPortfolio, createPortfolio, updatePortfolio, deletePortfolio } from "../controllers/portfolioController.js";
+import { getTestimonials, createTestimonial, updateTestimonial, deleteTestimonial } from "../controllers/testimonialController.js";
+import { getFAQs, createFAQ, updateFAQ, deleteFAQ } from "../controllers/faqController.js";
+const router = express.Router();
+router.post("/register", registerAdmin);
+router.post("/login", loginAdmin);
+router.get("/portfolio", getPortfolio);
+router.post("/portfolio", createPortfolio);
+router.put("/portfolio/:id", updatePortfolio);
+router.delete("/portfolio/:id", deletePortfolio);
+router.get("/testimonials", getTestimonials);
+router.post("/testimonials", createTestimonial);
+router.put("/testimonials/:id", updateTestimonial);
+router.delete("/testimonials/:id", deleteTestimonial);
+router.get("/faq", getFAQs);
+router.post("/faq", createFAQ);
+router.put("/faq/:id", updateFAQ);
+router.delete("/faq/:id", deleteFAQ);
+
+export default router;
