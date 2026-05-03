@@ -1,5 +1,14 @@
 # OUTPRO INDIA – Corporate Profile Website
 
+## Live Deployment Links
+
+Frontend Live Website:
+https://outpro-beta.vercel.app/
+
+Backend API:
+https://outpro-backend-4yr0.onrender.com/
+
+
 ## Project Overview
 
 OUTPRO INDIA is a corporate profile web application developed to present company services, portfolio projects, testimonials, and client interaction features through a modern and professional interface. The application provides a responsive and elegant user experience while also including an admin authentication system to manage website content efficiently.
