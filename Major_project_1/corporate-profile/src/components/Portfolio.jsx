@@ -31,7 +31,8 @@ export default function Portfolio() {
   const cardRefs = useRef([])
 
   useEffect(() => {
-    const base = import.meta.env.VITE_API_URL || ""
+    const base = "https://outpro-backend-4yr0.onrender.com"
+
     fetch(`${base}/api/content/portfolio`)
       .then(res => {
         if (!res.ok) throw new Error('Failed')
@@ -51,17 +52,20 @@ export default function Portfolio() {
   useEffect(() => {
     const observers = cardRefs.current.map((ref, i) => {
       if (!ref) return null
+
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setVisible(prev => [...prev, i])
+            setVisible(prev => [...new Set([...prev, i])])
           }
         },
         { threshold: 0.2 }
       )
+
       observer.observe(ref)
       return observer
     })
+
     return () => observers.forEach(o => o && o.disconnect())
   }, [portfolio])
 
@@ -72,6 +76,7 @@ export default function Portfolio() {
           0% { background-position: -200% center; }
           100% { background-position: 200% center; }
         }
+
         .shimmer-text {
           background: linear-gradient(90deg, #B8860B, #FFD700, #B8860B, #D4AF37);
           background-size: 200% auto;
@@ -79,30 +84,43 @@ export default function Portfolio() {
           -webkit-text-fill-color: transparent;
           animation: goldShimmer 4s linear infinite;
         }
+
         @keyframes slideUpFade {
-          from { opacity: 0; transform: translateY(60px); }
-          to { opacity: 1; transform: translateY(0); }
+          from {
+            opacity: 0;
+            transform: translateY(60px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
+
         .card-visible {
           animation: slideUpFade 0.7s ease forwards;
         }
+
         .card-hidden {
           opacity: 0;
           transform: translateY(60px);
         }
+
         .portfolio-img {
           transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
         }
+
         .portfolio-img:hover {
           transform: scale(1.04);
           box-shadow: 0 30px 60px rgba(212, 175, 55, 0.3);
         }
+
         .gold-line {
           width: 0;
           height: 2px;
           background: linear-gradient(90deg, #D4AF37, #FFD700);
           transition: width 0.5s ease;
         }
+
         .card-hover .gold-line {
           width: 100%;
         }
@@ -112,14 +130,18 @@ export default function Portfolio() {
         <h2 className="text-5xl font-serif shimmer-text mb-6 inline-block">
           Selected Work
         </h2>
+
         <p className="text-lg text-[#6E5A28] mb-16 max-w-2xl">
           A glimpse into premium digital solutions crafted for forward-thinking organizations.
         </p>
 
         {loading ? (
           <div className="grid md:grid-cols-2 gap-10">
-            {[1,2,3,4].map(i => (
-              <div key={i} className="rounded-3xl bg-[#D4AF37]/10 h-80 animate-pulse" />
+            {[1, 2, 3, 4].map(i => (
+              <div
+                key={i}
+                className="rounded-3xl bg-[#D4AF37]/10 h-80 animate-pulse"
+              />
             ))}
           </div>
         ) : (
@@ -128,7 +150,11 @@ export default function Portfolio() {
               <div
                 key={item._id || index}
                 ref={el => cardRefs.current[index] = el}
-                className={`${index % 2 === 1 ? 'md:translate-y-20' : ''} ${visible.includes(index) ? 'card-visible' : 'card-hidden'} ${hovered === index ? 'card-hover' : ''}`}
+                className={`
+                  ${index % 2 === 1 ? 'md:translate-y-20' : ''}
+                  ${visible.includes(index) ? 'card-visible' : 'card-hidden'}
+                  ${hovered === index ? 'card-hover' : ''}
+                `}
                 style={{ animationDelay: `${index * 0.15}s` }}
                 onMouseEnter={() => setHovered(index)}
                 onMouseLeave={() => setHovered(null)}
@@ -146,7 +172,10 @@ export default function Portfolio() {
                 <h3 className="text-2xl font-serif text-[#B8860B] transition-all duration-300">
                   {item.title}
                 </h3>
-                <p className="text-[#6E5A28] mt-2 leading-7">{item.description}</p>
+
+                <p className="text-[#6E5A28] mt-2 leading-7">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
